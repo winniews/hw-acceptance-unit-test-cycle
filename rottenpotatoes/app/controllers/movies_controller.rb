@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
 
   def search_directors
     @movie = Movie.find params[:id]
-    if not @movie.director.empty?
+    if not @movie.director.nil?
       @movies = Movie.where(director: @movie.director)
     else
       flash[:notice] = "'#{@movie.title}' has no director info"
