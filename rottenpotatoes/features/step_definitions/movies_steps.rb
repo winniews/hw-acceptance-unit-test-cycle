@@ -17,6 +17,16 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   end
 end
 
+Then /^(?:|the )director of "([^"]*)" should be "([^"]*)"/ do |movie_title, movie_director|
+  if page.respond_to? :should
+    page.should have_content(movie_title)
+      page.should have_content(movie_director)
+    else
+      assert page.has_content?(movie_title)
+      assert page.has_content?(movie_director)
+    end
+end
+
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   Movie.all.each do |movie|
