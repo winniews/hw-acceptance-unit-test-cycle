@@ -32,6 +32,9 @@ module NavigationHelpers
     id = Movie.where(:title => $1).pluck(:id)
     search_directors_path(id)
 
+  when /^the new movie page"/
+    movies_path
+
     else
       begin
         page_name =~ /^the (.*) page$/

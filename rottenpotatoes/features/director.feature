@@ -32,3 +32,17 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+
+Scenario: remove movie
+  Given I am on the details page for "Star Wars"
+  When I press "Delete"
+
+Scenario: create movie
+  Given I am on the new movie page
+  And I fill in "Title" with "TestMovie"
+  When I submit "Save Changes"
+  Given I am on the home page
+  
+
+
+ 

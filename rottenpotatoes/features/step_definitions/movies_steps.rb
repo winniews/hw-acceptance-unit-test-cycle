@@ -27,6 +27,12 @@ Then /^(?:|the )director of "([^"]*)" should be "([^"]*)"/ do |movie_title, movi
     end
 end
 
+When /^I submit "Save Changes"/ do
+  expect{ click_button 'Save Changes'}.to change(Movie, :count).by(1)
+
+end
+
+
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   Movie.all.each do |movie|
